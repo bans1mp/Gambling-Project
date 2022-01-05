@@ -1,9 +1,57 @@
 <% layout('layouts/boilerplate')%>
-    <h1>Roulette</h1>
-    <h2 id="value">
+    <h1 class="text-center py-2">Roulette</h1>
+    <h2 id="value" class="text-center mt-2 py-1">
         Starting soon...
     </h2>
+    <div class="row betting d-flex flex-row justify-content-center py-5">
+        <div class="card ml-3 mr-3 border border-info" style="width: 14rem;">
+            <img class="card-img-top" src="https://pbs.twimg.com/profile_images/459267120371466240/b1qOAbLz_400x400.png"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">2x Your Bet</h5>
+                <p class="card-text">
 
+                </p>
+                <a href="#" class="btn btn-primary">Place Bet</a>
+
+            </div>
+        </div>
+        <div class="card ml-3 mr-3 border border-info" style="width: 14rem;">
+            <img class="card-img-top" src="https://pbs.twimg.com/profile_images/459267120371466240/b1qOAbLz_400x400.png"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">14x Your Bet</h5>
+                <p class="card-text">
+
+                </p>
+                <a href="#" class="btn btn-primary">Place Bet</a>
+            </div>
+        </div>
+        <div class="card ml-3 mr-3 border border-info" style="width: 14rem;">
+            <img class="card-img-top" src="https://pbs.twimg.com/profile_images/459267120371466240/b1qOAbLz_400x400.png"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">2x Your Bet</h5>
+                <p class="card-text">
+
+                </p>
+                <a href="#" class="btn btn-primary">Place Bet</a>
+            </div>
+        </div>
+    </div>
+    <div class="">
+
+        <form class="form-inline">
+
+            <div class="form-group d-flex flex-row justify-content-center">
+                <div class="col-4">
+                    <label for="amount" class="sr-only">$</label>
+                    <input type="number" class="form-control" id="amount" placeholder="Enter Amount">
+                </div>
+
+            </div>
+        </form>
+    </div>
     <script>
         function updateRes() {
             let res;
