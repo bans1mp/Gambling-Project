@@ -3,6 +3,9 @@
     <h2 id="value" class="text-center mt-2 py-1">
         Starting soon...
     </h2>
+    <div class="d-flex justify-content-end">
+        <h3 id="coins">4000 coins</h3>
+    </div>
     <div class="row betting d-flex flex-row justify-content-center py-5">
         <div class="card ml-3 mr-3 border border-info" style="width: 14rem;">
             <img class="card-img-top" src="https://pbs.twimg.com/profile_images/459267120371466240/b1qOAbLz_400x400.png"
@@ -12,7 +15,7 @@
                 <p class="card-text">
 
                 </p>
-                <a href="#" class="btn btn-primary">Place Bet</a>
+                <button type="button" class="btn btn-secondary">Place Bet</button>
 
             </div>
         </div>
@@ -24,7 +27,7 @@
                 <p class="card-text">
 
                 </p>
-                <a href="#" class="btn btn-primary">Place Bet</a>
+                <button type="button" id="betButton" class="btn btn-secondary">Place Bet</button>
             </div>
         </div>
         <div class="card ml-3 mr-3 border border-info" style="width: 14rem;">
@@ -35,7 +38,7 @@
                 <p class="card-text">
 
                 </p>
-                <a href="#" class="btn btn-primary">Place Bet</a>
+                <button type="button" class="btn btn-secondary">Place Bet</button>
             </div>
         </div>
     </div>
@@ -46,7 +49,8 @@
             <div class="form-group d-flex flex-row justify-content-center">
                 <div class="col-4">
                     <label for="amount" class="sr-only">$</label>
-                    <input type="number" class="form-control" id="amount" placeholder="Enter Amount">
+                    <input id="betAmount" type="number" class="form-control" id="amount" placeholder="Enter Amount"
+                        value="5">
                 </div>
 
             </div>
@@ -69,4 +73,8 @@
         }
 
         setInterval(updateRes, 2000)
+        if (document.getElementById('betButton').clicked) {
+            document.getElementById("coins").innerHTML = `${document.getElementById('betAmount').value}`
+        }
+
     </script>
