@@ -1,72 +1,101 @@
 <% layout('layouts/boilerplate')%>
-    <h1 class="text-center py-2">Roulette</h1>
-    <h2 id="value" class="text-center mt-2 py-1">
-        Starting soon...
-    </h2>
-    <div class="row betting d-flex flex-row justify-content-center py-5">
-        <div class="card ml-3 mr-3 border border-info" style="width: 14rem;">
-            <img class="card-img-top" src="https://pbs.twimg.com/profile_images/459267120371466240/b1qOAbLz_400x400.png"
-                alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">2x Your Bet</h5>
-                <p class="card-text">
-
-                </p>
-                <a href="#" class="btn btn-primary">Place Bet</a>
-
-            </div>
-        </div>
-        <div class="card ml-3 mr-3 border border-info" style="width: 14rem;">
-            <img class="card-img-top" src="https://pbs.twimg.com/profile_images/459267120371466240/b1qOAbLz_400x400.png"
-                alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">14x Your Bet</h5>
-                <p class="card-text">
-
-                </p>
-                <a href="#" class="btn btn-primary">Place Bet</a>
-            </div>
-        </div>
-        <div class="card ml-3 mr-3 border border-info" style="width: 14rem;">
-            <img class="card-img-top" src="https://pbs.twimg.com/profile_images/459267120371466240/b1qOAbLz_400x400.png"
-                alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">2x Your Bet</h5>
-                <p class="card-text">
-
-                </p>
-                <a href="#" class="btn btn-primary">Place Bet</a>
-            </div>
-        </div>
-    </div>
-    <div class="">
-
-        <form class="form-inline">
-
-            <div class="form-group d-flex flex-row justify-content-center">
-                <div class="col-4">
-                    <label for="amount" class="sr-only">$</label>
-                    <input type="number" class="form-control" id="amount" placeholder="Enter Amount">
+    <h1 class="text-center">Roulette</h1>
+    <h2 id="display" class="text-center mt-3">Starting Soon...</h2>
+    <form>
+        <div class="mt-4 py-4">
+            <div class="form-group row">
+                <label for="amount" class="col-sm-2 col-form-label">Amount</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="amount" placeholder="Amount">
                 </div>
+            </div>
+        </div>
+        <div class="mb-2">
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Choose Option</legend>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="bet" id="bet1" value="option1" checked>
+                            <label class="form-check-label" for="bet1">
+                                A
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="bet" id="bet2" value="option2">
+                            <label class="form-check-label" for="bet2">
+                                ENDBAI
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="bet" id="bet3" value="option3">
+                            <label class="form-check-label" for="bet3">
+                                B
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary mt-3">Place Bet</button>
+        </div>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <h3 id="balance" class="mt-4">5000</h3>
+            <div class="d-flex flex-row justify-content-center mt-2">
+
+                <div class="display-5 mr-2 ml-2">0</div>
+                <div class="display-5 mr-2 ml-2">0</div>
+                <div class="display-5 mr-2 ml-2">0</div>
+
 
             </div>
-        </form>
-    </div>
+        </div>
+
+
+    </form>
+
     <script>
-        function updateRes() {
+
+        const cutBalance = (amount) => {
+            document.getElementById("balance").textContent = parseFloat(document.getElementById("balance").textContent) - parseFloat(amount)
+        }
+        const getResult = () => {
             let res;
             const rand = Math.floor((Math.random() * 15) + 1);
-            if (rand === 1) {
-                res = "Jackpot";
-            }
-            else if (rand <= 8) {
-                res = "A";
-            }
-            else {
-                res = "B";
-            }
-            document.getElementById("value").innerHTML = res;
+            if (rand == 1) res = "ENDBAI"
+            else if (rand <= 8) res = "A"
+            else res = "B"
+            return res;
         }
 
-        setInterval(updateRes, 2000)
+
+        const roll = () => {
+            const display = document.getElementById("display");
+            setInterval(() => {
+                display.textContent = "Rolling..."
+                document.getElementById("bet1").disabled = true;
+                document.getElementById("bet2").disabled = true;
+                document.getElementById("bet3").disabled = true;
+                let betAmount = document.getElementById("amount").value;
+                if (betAmount) {
+                    cutBalance(betAmount);
+                }
+                document.getElementById("amount").value = "";
+                document.getElementById("amount").disabled = true;
+                console.log(betAmount);
+                setTimeout(() => {
+                    display.textContent = getResult();
+                    document.getElementById("bet1").disabled = false;
+                    document.getElementById("bet2").disabled = false;
+                    document.getElementById("bet3").disabled = false;
+                    document.getElementById("amount").disabled = false;
+
+                    document.getElementById("amount").value = "";
+                }, 5000)
+            }, 15000)
+        }
+
+        roll();
+
     </script>
