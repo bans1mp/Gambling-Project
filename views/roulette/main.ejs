@@ -1,62 +1,67 @@
 <% layout('layouts/boilerplate')%>
-    <h1 class="text-center">Roulette</h1>
-    <h2 id="display" class="text-center mt-3">Starting Soon...</h2>
-    <form>
-        <div class="mt-4 py-4">
-            <div class="form-group row">
-                <label for="amount" class="col-sm-2 col-form-label">Amount</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="amount" placeholder="Amount">
-                </div>
-            </div>
-        </div>
-        <div class="mb-2">
-            <fieldset class="form-group">
-                <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Choose Option</legend>
+    <div class="d-flex justify-content-center">
+        <h1 id="gameOver" class="display-4" hidden>GAME OVER</h1>
+    </div>
+    <div id="mainBody">
+
+        <h1 class="text-center">Roulette</h1>
+        <h2 id="display" class="text-center mt-3">Starting Soon...</h2>
+        <form>
+            <div class="mt-4 py-4">
+                <div class="form-group row">
+                    <label for="amount" class="col-sm-2 col-form-label">Amount</label>
                     <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="bet" id="bet1" value="A" checked>
-                            <label class="form-check-label" for="bet1">
-                                A
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="bet" id="bet2" value="ENDBAI">
-                            <label class="form-check-label" for="bet2">
-                                ENDBAI
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="bet" id="bet3" value="B">
-                            <label class="form-check-label" for="bet3">
-                                B
-                            </label>
-                        </div>
+                        <input type="number" class="form-control" id="amount" placeholder="Amount">
                     </div>
                 </div>
-            </fieldset>
-        </div>
-        <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-secondary mt-3" id="bettingButton"
-                onclick="cutBalance(document.getElementById('amount').value) ,  currentBetsUpdater(document.getElementById('amount').value) , clearInput() ">Place
-                Bet</button>
-        </div>
-        <div class="d-flex flex-column align-items-center justify-content-center">
-            <h3 id="balance" class="mt-4">5000</h3>
-            <div class="d-flex flex-row justify-content-center mt-2">
-
-                <div class="display-5 mr-2 ml-2" id="idA">0</div>
-                <div class="display-5 mr-2 ml-2" id="idENDBAI">0</div>
-                <div class="display-5 mr-2 ml-2" id="idB">0</div>
-
-
             </div>
-        </div>
+            <div class="mb-2">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <legend class="col-form-label col-sm-2 pt-0">Choose Option</legend>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="bet" id="bet1" value="A" checked>
+                                <label class="form-check-label" for="bet1">
+                                    A
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="bet" id="bet2" value="ENDBAI">
+                                <label class="form-check-label" for="bet2">
+                                    ENDBAI
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="bet" id="bet3" value="B">
+                                <label class="form-check-label" for="bet3">
+                                    B
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary mt-3" id="bettingButton"
+                    onclick="  currentBetsUpdater(document.getElementById('amount').value) ,cutBalance(document.getElementById('amount').value) , clearInput() ">Place
+                    Bet</button>
+            </div>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <h3 id="balance" class="mt-4">5000</h3>
+                <div class="d-flex flex-row justify-content-center mt-2">
+
+                    <div class="display-5 mr-2 ml-2" id="idA">0</div>
+                    <div class="display-5 mr-2 ml-2" id="idENDBAI">0</div>
+                    <div class="display-5 mr-2 ml-2" id="idB">0</div>
 
 
-    </form>
+                </div>
+            </div>
 
+
+        </form>
+    </div>
     <script>
 
         const clearInput = () => {
@@ -77,26 +82,31 @@
         }
 
         const currentBetsUpdater = (betAmount) => {
-            const selected = fetchBet();
-            if (selected == "A") {
-                let current = parseFloat(document.getElementById("idA").innerHTML);
-                let updated = current + parseFloat(betAmount)
-                document.getElementById("idA").innerHTML = updated.toString();
-            }
-            else if (selected == "ENDBAI") {
-                let current = parseFloat(document.getElementById("idENDBAI").innerHTML);
-                let updated = current + parseFloat(betAmount)
-                document.getElementById("idENDBAI").innerHTML = updated.toString();
-            }
-            else {
-                let current = parseFloat(document.getElementById("idB").innerHTML);
-                let updated = current + parseFloat(betAmount)
-                document.getElementById("idB").innerHTML = updated.toString();
+            if (betAmount) {
+                if (parseFloat(betAmount) > parseFloat(document.getElementById("balance").innerHTML)) {
+                    return;
+                }
+                const selected = fetchBet();
+                if (selected == "A") {
+                    let current = parseFloat(document.getElementById("idA").innerHTML);
+                    let updated = current + parseFloat(betAmount)
+                    document.getElementById("idA").innerHTML = updated.toString();
+                }
+                else if (selected == "ENDBAI") {
+                    let current = parseFloat(document.getElementById("idENDBAI").innerHTML);
+                    let updated = current + parseFloat(betAmount)
+                    document.getElementById("idENDBAI").innerHTML = updated.toString();
+                }
+                else {
+                    let current = parseFloat(document.getElementById("idB").innerHTML);
+                    let updated = current + parseFloat(betAmount)
+                    document.getElementById("idB").innerHTML = updated.toString();
+                }
             }
         }
 
         const cutBalance = (amount) => {
-            if (amount) {
+            if (amount && parseFloat(amount) <= parseFloat(document.getElementById("balance").textContent)) {
                 document.getElementById("balance").textContent = parseFloat(document.getElementById("balance").textContent) - parseFloat(amount)
             }
         }
@@ -121,6 +131,12 @@
             return res;
         }
 
+        const endGame = () => {
+            setTimeout(() => {
+                document.getElementById("mainBody").hidden = true;
+                document.getElementById("gameOver").hidden = false;
+            }, 3000)
+        }
 
         const roll = () => {
             const display = document.getElementById("display");
@@ -136,6 +152,7 @@
 
                 setTimeout(() => {
                     display.textContent = getResult();
+
                     if (display.textContent == "A") {
                         addBalance(1);
                     }
@@ -145,6 +162,9 @@
                     else {
                         addBalance(3)
                     }
+
+
+
                     document.getElementById("bet1").disabled = false;
                     document.getElementById("bet2").disabled = false;
                     document.getElementById("bet3").disabled = false;
@@ -153,9 +173,10 @@
                     document.getElementById("idA").innerHTML = "0"
                     document.getElementById("idENDBAI").innerHTML = "0"
                     document.getElementById("idB").innerHTML = "0"
-
-
                     document.getElementById("amount").value = "";
+                    if (document.getElementById("balance").textContent == "0") {
+                        endGame();
+                    }
                 }, 5000)
             }, 15000)
         }
