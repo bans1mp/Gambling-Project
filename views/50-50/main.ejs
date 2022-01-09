@@ -1,12 +1,23 @@
 <% layout('layouts/boilerplate')%>
 
-    <div class="d-flex justify-content-center">
-        <h1 id="gameOver" class="display-4" hidden>GAME OVER</h1>
+    <div id="gameOver" class="container" hidden>
+        <h1 class="display-4 text-center">GAME OVER</h1>
+        <br>
+
+        <div class="col-2 offset-5">
+            <div class="row">
+                <a href="" type="button" class="btn btn-outline-danger">Retry</a>
+            </div>
+
+        </div>
+
     </div>
 
     <div id="mainBody">
         <h1 class="text-center">50-50</h1>
+        <hr>
         <h2 id="display" class="text-center mt-3">Starting Soon...</h2>
+        <hr>
 
         <form>
             <div class="mt-4 py-4">
@@ -39,12 +50,15 @@
                     </div>
                 </fieldset>
             </div>
+            <hr>
             <div class="d-flex justify-content-center">
                 <button type="button" class="btn btn-secondary mt-3" id="bettingButton"
                     onclick="  currentBetsUpdater(document.getElementById('amount').value) ,cutBalance(document.getElementById('amount').value) , clearInput() ">Place
                     Bet</button>
             </div>
+            <hr>
             <div class="d-flex flex-column align-items-center justify-content-center">
+                <h3 class="display-6">Amount Left</h3>
                 <h3 id="balance" class="mt-4">5000</h3>
                 <div class="d-flex flex-row justify-content-center mt-2">
 
@@ -167,6 +181,7 @@
             setTimeout(() => {
                 document.getElementById("mainBody").hidden = true;
                 document.getElementById("gameOver").hidden = false;
+
             }, 3000)
         }
 
