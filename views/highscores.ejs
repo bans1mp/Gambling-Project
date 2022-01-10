@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate')%>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Game</th>
+                <th scope="col">Scores</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let score of allScores) { %>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        <%= score.name %>
+                    </td>
+                    <td>
+                        <%= score.game %>
+                    </td>
+                    <td>
+                        <%= score.highScore %>
+                    </td>
+                </tr>
+                <% } %>
+
+        </tbody>
+    </table>

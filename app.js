@@ -8,7 +8,6 @@ const UserInfo = require('./models/userInfo')
 const methodOverride = require('method-override');
 mongoose.connect('mongodb://localhost:27017/gamblingApp', {});
 
-
 db.on("error", console.error.bind(console, "Connection error: "));
 db.once("open", () => {
     console.log("database connected")
@@ -35,16 +34,21 @@ app.get('/roulette/main', (req, res) => {
 })
 
 app.post('/roulette/main', async (req, res) => {
-
-    const userInfo = new UserInfo(req.body.userInfo);
+    const userInfo = new UserInfo({ name: req.body.name, highScore: 5000, game: 'Roulette' });
     await userInfo.save();
-    res.redirect(`/roulette/main`)
+
+
+    res.render(`roulette/main`, { userInfo })
 })
 
 app.get('/50-50/main', (req, res) => {
     res.render('50-50/main')
 })
 
+app.get('/highscores', async (req, res) => {
+    const allScores = await UserInfo.find();
+    res.render('highscores', { allScores })
+})
 app.listen(3000, () => {
     console.log("Listening on port 3000");
 })

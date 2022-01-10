@@ -10,8 +10,10 @@
 
         </div>
 
+
     </div>
     <div id="mainBody">
+
 
         <h1 class="text-center">Roulette</h1>
         <hr>
@@ -79,8 +81,15 @@
 
 
         </form>
+
+
+
     </div>
+
     <script>
+
+        let highest = 5000;
+
 
         const clearInput = () => {
             document.getElementById("amount").value = ""
@@ -139,6 +148,10 @@
             else {
                 document.getElementById("balance").textContent = parseFloat(document.getElementById("balance").textContent) + 2 * parseFloat(document.getElementById("idB").innerHTML)
             }
+
+            highest = Math.max(highest, parseFloat(document.getElementById("balance").textContent));
+
+            /* updateHighscore(parseFloat(document.getElementById("balance").textContent), UserInfo.highScore, UserInfo._id) */
         }
         const getResult = () => {
             let res;
@@ -155,6 +168,7 @@
                 document.getElementById("gameOver").hidden = false;
 
             }, 3000)
+
         }
 
         const roll = () => {
