@@ -37,33 +37,21 @@ app.get('/roulette/start', (req, res) => {
     res.render('roulette/start')
 })
 
-
-
-function printlol() {
-    console.log('lmao');
-}
-
 app.post('/roulette/start', async (req, res) => {
     const userInfo = new UserInfo({ name: req.body.name, highScore: 5000, game: 'Roulette' });
     await userInfo.save();
     res.render(`roulette/main`, { userInfo })
 })
 
-
-
-
-
-
 app.get('/50-50/start', (req, res) => {
     res.render('50-50/start')
 })
 
-app.get('/50-50/main', (req, res) => {
-    res.render('50-50/main')
-})
 
-app.post('/50-50/main', async (req, res) => {
-
+app.post('/50-50/start', async (req, res) => {
+    const userInfo = new UserInfo({ name: req.body.name, highScore: 5000, game: '50-50' });
+    await userInfo.save();
+    res.render(`50-50/main`, { userInfo })
 })
 
 
@@ -80,7 +68,6 @@ app.put('/highscores', async (req, res) => {
     res.redirect('highscores')
 })
 
-app.post('/highscores',)
 
 app.listen(3000, () => {
     console.log("Listening on port 3000");

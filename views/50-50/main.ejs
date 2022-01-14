@@ -4,11 +4,11 @@
         <h1 class="display-4 text-center">GAME OVER</h1>
         <br>
 
-        <div class="col-2 offset-5">
-            <div class="row">
-                <a href="" type="button" class="btn btn-outline-danger">Retry</a>
-            </div>
-        </div>
+        <form action="/highscores?_method=PUT" method="POST" novalidate class="validated-form">
+            <input id="lmfao" type="text" name="score" value="5000" hidden>
+            <button name="id" value=<%=userInfo._id%> class="btn btn-success" type="submit">Go To
+                Leaderboards</button>
+        </form>
     </div>
 
     <div id="mainBody">
@@ -59,6 +59,7 @@
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <h3 class="display-6">Amount Left</h3>
                 <h3 id="balance" class="mt-4">5000</h3>
+                <h3>Score: <span id="highScoreLol">5000</span></h3>
                 <div class="d-flex flex-row justify-content-center mt-2">
 
                     <div class="display-5 mr-2 ml-2" id="idA">0</div>
@@ -76,6 +77,7 @@
 
     <script>
 
+        let highest = 5000;
         const clearInput = () => {
             document.getElementById("amount").value = ""
         }
@@ -174,6 +176,10 @@
             else {
                 document.getElementById("balance").textContent = parseFloat(document.getElementById("balance").textContent) + 2 * parseFloat(document.getElementById("idB").innerHTML)
             }
+
+            highest = Math.max(highest, parseFloat(document.getElementById("balance").textContent));
+            document.getElementById('highScoreLol').textContent = highest;
+            document.getElementById('lmfao').value = highest;
         }
 
         const endGame = () => {
