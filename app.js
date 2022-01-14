@@ -19,6 +19,7 @@ const ejsMate = require('ejs-mate')
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
+app.use(express.static(__dirname + '/styles'))
 
 //Method Override Setup
 const methodOverride = require('method-override');

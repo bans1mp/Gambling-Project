@@ -1,0 +1,73 @@
+
+
+*{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1rem;
+    color: white;
+}
+
+body {
+    background-color: rgb(24, 24, 24);    
+}
+
+#heading {
+    color:  #db291d; 
+    font-size: 4.5rem;
+    /* text-shadow: 0 0 4px rgb(24, 0, 0) */
+}
+
+.nav-link {
+    font-size: 1.4rem;
+}
+
+.navbar-brand{
+    font-size: 1.6rem;
+    margin-top: 4px;
+}
+
+.dropdown-item{
+    font-size: 1.2rem;
+
+}
+
+.card-title {
+    font-size: 2rem;
+    color:#005539   ;
+
+}
+.card-text{
+    font-size: 1.4rem;
+    color:#005539   ;
+
+}
+
+.card-body {
+    background-color:#5cdb95   ;
+}
+
+.card-header {
+    font-size: 1.5rem;
+    background-color:#2b8f56   ;
+    color:white   ;
+    text-shadow: 0 0 5px black;
+
+}
+
+.card-footer {
+    font-size: 1.5rem;
+    background-color:#2b8f56   ;
+    color:white   ;
+    text-shadow: 0 0 5px black;
+
+}
+
+.card {
+    border: none;
+}
+
+.navbar {
+    background-color: rgb(124, 67, 57)!important;
+}
+.footer {
+    background-color: rgb(124, 67, 57)!important;
+}
