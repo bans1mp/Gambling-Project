@@ -164,11 +164,15 @@ body {
     transform: translateX(20%);
 }
 
-.fade-in-left,.fade-in-right {
+.fade-in-bottom{
+    transform: translateY(10%);
+}
+
+.fade-in-left,.fade-in-right, .fade-in-bottom{
     transition: transform 1.5s ease, opacity 400ms linear;
 }
 
-.fade-in-left.appear,.fade-in-right.appear {
+.fade-in-left.appear,.fade-in-right.appear, .fade-in-bottom.appear {
     transform: translateX(0);
 }
 
@@ -273,3 +277,7 @@ body {
     background-color: rgb(32, 32, 32);
 }
 
+.info {
+    display: flex;
+    justify-content: center;
+}

@@ -5,8 +5,24 @@
     <h2 id="contributers">Contributers</h2>
     <h3 id="names">&#8227; Sarthak Gandotra <span class="badge badge-secondary">OWNER</span></h3>
 
+    <div class="card">
+        <div class="card-header info">
+            Description
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Sarthak Gandotra</h5>
+            <p class="card-text">Sarthak Gandotra is a 19 y/o individual who is currently a student pursuing B.Tech in
+                Mathematics and Computing at the Delhi Technological University at Bawana Road. Sarthak is originally
+                from the city of Jammu, Jammu and Kashmir. He got his primary education from Delhi Public School, Jammu.
+                Sarthak has keen interest in Web Development and wants to become a good Web Developer. Not only this but
+                sarthak is very good at Mathematics and also qualified the Regional Mathematical Olympiad (RMO) in his
+                12th grade.
+            </p>
+        </div>
+    </div>
+
     <div class="d-flex justify-content-center">
-        <div class="card about-card" id="melmao" style="width: 18rem;">
+        <div class="card about-card fade-in fade-in-left" id="melmao" style="width: 18rem;">
             <img class="card-img-top" src="IMG_4125.PNG" alt="Card image cap">
             <div class="card-body ">
                 <h5 class="card-title">Instagram</h5>
@@ -17,7 +33,7 @@
             </div>
         </div>
 
-        <div class="card about-card" style="width: 18rem;">
+        <div class="card about-card fade-in fade-in-bottom" style="width: 18rem;">
             <img class="card-img-top" src="IMG_4127.PNG" alt="Card image cap">
             <div class="card-body ">
                 <h5 class="card-title">LinkedIn</h5>
@@ -28,7 +44,7 @@
             </div>
         </div>
 
-        <div class="card about-card" style="width: 18rem;">
+        <div class="card about-card fade-in fade-in-right" style="width: 18rem;">
             <img class="card-img-top" src="IMG_4128.PNG" alt="Card image cap">
             <div class="card-body ">
                 <h5 class="card-title">Github</h5>
@@ -40,3 +56,26 @@
         </div>
 
     </div>
+
+    <script>
+        const faders = document.querySelectorAll('.fade-in');
+        /* const sliders = docum */
+        const appearOptions = {
+            threshold: 0
+
+        };
+        const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            })
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader)
+        })
+    </script>
