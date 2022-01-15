@@ -34,6 +34,10 @@ app.get('/', (req, res) => {
     res.render('home');
 })
 
+app.get('/about', (req, res) => {
+    res.render('about')
+})
+
 app.get('/roulette/start', (req, res) => {
     res.render('roulette/start')
 })
