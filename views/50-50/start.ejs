@@ -1,16 +1,16 @@
 <% layout('layouts/boilerplate')%>
     <div class="row">
-        <h1 class="text-center">Information</h1>
+        <h1 class="text-center infoHead">50-50</h1>
         <div class="col-6 offset-3">
-            <form action="/50-50/start" method="POST" novalidate class="validated-form">
+            <form action="/50-50/start" method="POST" class="validated-form">
                 <div class="mb-3">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-control" type="text" id="name" name="name" required>
+                    <label class="form-label nameLabel" for="name">Name</label>
+                    <input class="form-control nameInput" type="text" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-success" type="submit">Start Game</button>
+                    <button class="btn btn-success startButton" type="submit">Start Game</button>
                 </div>
             </form>
-            <a href="/">Back to Home Page</a>
+            <a class="backToHome" href="/">Back to Home Page</a>
         </div>
     </div>

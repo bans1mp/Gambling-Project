@@ -1,46 +1,46 @@
 <% layout('layouts/boilerplate')%>
 
     <div id="gameOver" class="container" hidden>
-        <h1 class="display-4 text-center">GAME OVER</h1>
+        <h1 class="display-4 text-center gameOver">GAME OVER</h1>
         <br>
 
         <form action="/highscores?_method=PUT" method="POST" novalidate class="validated-form">
             <input id="lmfao" type="text" name="score" value="5000" hidden>
-            <button name="id" value=<%=userInfo._id%> class="btn btn-success" type="submit">Go To
+            <button id="gtl" name="id" value=<%=userInfo._id%> class="btn btn-success" type="submit">Go To
                 Leaderboards</button>
         </form>
     </div>
 
     <div id="mainBody">
 
-        <h1 class="text-center">50-50</h1>
+        <h1 class="text-center infoHead">50-50</h1>
         <hr>
-        <h2 id="display" class="text-center mt-3">Starting Soon...</h2>
+        <h2 id="display" class="text-center mt-3 outcome">Starting Soon...</h2>
         <hr>
 
         <form>
             <div class="mt-4 py-4">
                 <div class="form-group row">
-                    <label for="amount" class="col-sm-2 col-form-label">Amount</label>
+                    <label for="amount" class="col-sm-2 col-form-label formInput">Amount</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="amount" placeholder="Amount">
+                        <input type="number" class="form-control formInput" id="amount" placeholder="Amount">
                     </div>
                 </div>
             </div>
             <div class="mb-2">
                 <fieldset class="form-group">
                     <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Choose Option</legend>
+                        <legend class="col-form-label col-sm-2 pt-0 formInput">Choose Option</legend>
                         <div class="col-sm-10">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="bet" id="head" value="head" checked>
-                                <label class="form-check-label" for="head">
+                                <label class="form-check-label formInput" for="head">
                                     HEAD
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="bet" id="tail" value="tail">
-                                <label class="form-check-label" for="tail">
+                                <label class="form-check-label formInput" for="tail">
                                     TAIL
                                 </label>
                             </div>
@@ -51,15 +51,20 @@
             </div>
             <hr>
             <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-secondary mt-3" id="bettingButton"
+                <button type="button" class="btn btn-secondary mt-1 formInput" id="bettingButton"
                     onclick="  currentBetsUpdater(document.getElementById('amount').value) ,cutBalance(document.getElementById('amount').value) , clearInput() ">Place
                     Bet</button>
             </div>
             <hr>
             <div class="d-flex flex-column align-items-center justify-content-center">
-                <h3 class="display-6">Amount Left</h3>
+                <h3 class="display-6 amountLeft">Amount Left</h3>
                 <h3 id="balance" class="mt-4">5000</h3>
-                <h3>Score: <span id="highScoreLol">5000</span></h3>
+                <div class="seperate"></div>
+                <h3 id="highscorehead">Score: <span id="highScoreLol">5000</span></h3>
+                <div class="seperate"></div>
+
+                <h3 class="currentBets amountLeft">Current Bets</h3>
+
                 <div class="d-flex flex-row justify-content-center mt-2">
 
                     <div class="display-5 mr-2 ml-2" id="idA">0</div>

@@ -9,20 +9,24 @@
             </tr>
         </thead>
         <tbody>
-            <% for(let score of allScores) { %>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>
-                        <%= score.name %>
-                    </td>
-                    <td>
-                        <%= score.game %>
-                    </td>
-                    <td>
-                        <%= score.highScore %>
-                    </td>
-                </tr>
-                <% } %>
+            <% let k=1 %>
+                <% for(let score of allScores) { %>
+                    <tr>
+                        <th scope="row">
+                            <%=k %>
+                        </th>
+                        <td>
+                            <%= score.name %>
+                        </td>
+                        <td>
+                            <%= score.game %>
+                        </td>
+                        <td>
+                            <%= score.highScore %>
+                        </td>
+                    </tr>
+                    <% k++ %>
+                        <% } %>
 
         </tbody>
     </table>
