@@ -376,3 +376,71 @@ th{
     font-size: 10em;
     text-shadow: 5px 5px 0 black;
 }
+
+.options {
+    display: flex;
+    width: 24%;
+    border: 2px solid black;
+    border-radius: 100vw;
+    background-color: brown;
+    box-shadow: 0 0 2px white;
+    
+}
+
+.option2 , .option3  {
+    border-left: 2px solid black;
+    
+}
+
+.option1,.option2,.option3 {
+    width: 140%;
+    height: 110%;
+    text-align: center;
+    cursor: pointer;
+    
+}
+
+.option3 {
+    transform: translateX(4%);
+}
+
+.form-check-input:checked + .optionhai {
+    transition: background-color 200ms linear;
+    background-color: rgb(71, 16, 16);
+}
+
+.option1 {
+    transform: translateX(2px);
+}
+
+.options50 {
+    display: flex;
+    width: 15%;
+    border: 2px solid black;
+    border-radius: 100vw;
+    background-color: brown;
+    box-shadow: 0 0 2px white;
+}
+
+.option502   {
+    border-left: 2px solid black;
+    
+}
+
+.option501,.option502 {
+    width: 140%;
+    height: 110%;
+    text-align: center;
+    cursor: pointer;
+    
+}
+
+
+.form-check-input:checked + .option50hai {
+    transition: background-color 200ms linear;
+    background-color: rgb(71, 16, 16);
+}
+
+.option501 {
+    transform: translateX(2px);
+}
