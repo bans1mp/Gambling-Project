@@ -29,6 +29,9 @@ app.use(methodOverride('_method'));
 const UserInfo = require('./models/userInfo');
 const { userInfo } = require('os');
 
+//Error 
+const apiErrorHandler = require('./error/api-error-handler');
+const APIError = require('./error/apierror');
 //Requests
 app.get('/', (req, res) => {
     res.render('home');
